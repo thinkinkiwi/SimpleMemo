@@ -13,23 +13,17 @@
      class="form-horizontal">
      @csrf
 
-        <!-- メモ内容（ここから） -->
+        <!-- メモ登録窓、登録ボタン（ここから） -->
         <div class="form-group">
             <div class="col-sm-6">
                 <input type="text" name="memo_content"></input>
-            </div>
-        </div>
-        <!-- メモ内容（ここまで） -->
-
-        <!-- メモ登録ボタン（ここから） -->
-        <div class="form-group">
-            <div class="col-sm-offset-3 col-sm-6">
                 <button type="submit" class="btn btn-primary">
                     登録
                 </button>
             </div>
         </div>
-        <!-- メモ登録ボタン（ここまで） -->
+        <!-- メモ登録窓、登録ボタン（ここまで） -->
+
     </form>
     <!-- 新規メモ追加フォーム（ここまで） -->
 
@@ -63,6 +57,10 @@
                 <td>{{ $memo->memo_content }}</td>
                 <td>{{ $memo->created_at }}</td>
                 <td>{{ $memo->updated_at }}</td>
+                <td>
+                    <button class="btn btn-success">編集</button>
+                    <button class="btn btn-danger">削除</button>
+                </td>
             </tr>
             @endforeach
         </tbody>
