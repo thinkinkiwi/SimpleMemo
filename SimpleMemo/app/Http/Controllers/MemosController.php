@@ -46,9 +46,9 @@ class MemosController extends Controller
     // 削除（ここまで）
 
     // 一覧表示（ここから）
-    public function memoIndex()
+    public function memosIndex()
     {
-        $memos = Memo::orderBy('created_at','desc')
+        $memos = Memo::orderBy('id','asc')
         ->paginate(20);
         return view('main',
         [

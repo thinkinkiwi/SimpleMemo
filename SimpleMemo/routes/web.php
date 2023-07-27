@@ -18,13 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// 一覧表示
-Route::get('/main', function () {
-    return view('main');
-});
-
 // 登録処理
-Route::post('/memos', [App\Http\Controllers\MemosController::class, 'store'])->name('memos');
+Route::post('/memos', [App\Http\Controllers\MemosController::class, 'store']);
+
+// メモ一覧表示
+Route::get('/main', [App\Http\Controllers\MemosController::class, 'memosIndex']);
 
 Auth::routes();
 
