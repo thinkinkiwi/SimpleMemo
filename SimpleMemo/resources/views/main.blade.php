@@ -20,6 +20,13 @@
                 <button type="submit" class="btn btn-primary">
                     登録
                 </button>
+
+                <!-- バリデーション時、エラーメッセージを表示する（ここから） -->
+                @error('memo_content')
+                <div class="alert alert-danger mt-1">{{ $message }}</div>
+                @enderror
+                <!-- バリデーション時、エラーメッセージを表示する（ここまで） -->
+
             </div>
         </div>
         <!-- メモ登録窓、登録ボタン（ここまで） -->
