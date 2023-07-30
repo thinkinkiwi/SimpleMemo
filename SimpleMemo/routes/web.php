@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Memo;
+use Auth; // 認証機能を使用
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +38,11 @@ Route::delete('/memos/{memo}', [App\Http\Controllers\MemosController::class, 'de
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// ログイン認証がされている場合は「/main」に遷移、そうでない場合はログイン画面へ遷移するように変更
+Route::get('/home', function () {
+    if (Auth::check()) {
+        return redirect('/main');
+    } else {
+        return view('auth.login');
+    }
+})->name('home');
