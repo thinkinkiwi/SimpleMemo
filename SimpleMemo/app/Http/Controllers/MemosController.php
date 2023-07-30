@@ -87,8 +87,18 @@ class MemosController extends Controller
     }
     // 編集機能・updateメソッド（ここまで）
 
-    // 削除（ここから）
-    // 削除（ここまで）
+    // 削除・destroyメソッド（ここから）
+    public function destroy($id){
+    $memos = Memo::where('id', $id)->where('user_id', Auth::user()->id);
+
+    if($memos) {
+        $memos->delete();
+    return response()->json(['success' => true]);
+    }
+    return response()->json(['success' => false]);
+
+    }
+    // 削除・destroyメソッド（ここまで）
 
     // 一覧表示（ここから）
     public function memosIndex()

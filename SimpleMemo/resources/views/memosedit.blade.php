@@ -34,7 +34,6 @@
         </div>
         <!--戻る・修正ボタン（ここまで） -->
 
-
         <!-- id値を送信 -->
         <input type="hidden" name="id" value="{{$memo->id}}">
         <!--/ id値を送信 -->

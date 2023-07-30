@@ -32,6 +32,9 @@ Route::get('/memosedit/{memos}', function (Memo $memos) {
 // 編集機能
 Route::post('/memos/update', [App\Http\Controllers\MemosController::class, 'update']);
 
+// 削除機能
+Route::delete('/memos/{memo}', [App\Http\Controllers\MemosController::class, 'destroy']);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

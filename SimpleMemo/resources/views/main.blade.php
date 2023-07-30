@@ -59,7 +59,7 @@
                 <td>{{ $memo->updated_at }}</td>
                 <td>
                     <a href="{{ url('memosedit/'.$memo->id) }}" class="btn btn-success">編集</a>
-                    <button class="btn btn-danger">削除</button>
+                    <button class="btn btn-danger" onclick="memosDelete({{ $memo->id }})">削除</button>
                 </td>
             </tr>
             @endforeach
@@ -73,7 +73,34 @@
 @endif
 <!-- メモ一覧表示（ここまで） -->
 
-
 </div>
 <!-- コンテンツ大枠（ここまで） -->
 @endsection
+
+<!-- 削除確認ウィンドウを表示するJS（ここから） -->
+<script>
+    function memosDelete(memo_id) {
+        // 確認ウィンドウを表示
+        if (confirm('本当に削除してもよろしいですか？')) {
+            // OK→削除実行（destroy）
+            $.ajax({
+                url: `{{ url('memos') }}/${memo_id}`,
+                type: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                },
+                success: function (data) {
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert('削除に失敗しました');
+                    }
+                },
+                error: function () {
+                    alert('エラーが発生しました');
+                }
+            });
+        }
+    }
+</script>
+<!-- 削除確認ウィンドウを表示するJS（ここまで） -->
