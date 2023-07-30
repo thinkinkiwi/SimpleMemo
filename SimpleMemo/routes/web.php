@@ -24,6 +24,14 @@ Route::post('/memos', [App\Http\Controllers\MemosController::class, 'store']);
 // メモ一覧表示
 Route::get('/main', [App\Http\Controllers\MemosController::class, 'memosIndex']);
 
+// 編集画面
+Route::get('/memosedit/{memos}', function (Memo $memos) {
+    return view('memosedit', ['memo'=>$memos]);
+});
+
+// 編集機能
+Route::post('/memos/update', [App\Http\Controllers\MemosController::class, 'update']);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

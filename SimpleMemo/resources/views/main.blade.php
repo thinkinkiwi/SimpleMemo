@@ -58,7 +58,7 @@
                 <td>{{ $memo->created_at }}</td>
                 <td>{{ $memo->updated_at }}</td>
                 <td>
-                    <button class="btn btn-success">編集</button>
+                    <a href="{{ url('memosedit/'.$memo->id) }}" class="btn btn-success">編集</a>
                     <button class="btn btn-danger">削除</button>
                 </td>
             </tr>
@@ -75,6 +75,5 @@
 
 
 </div>
-<!-- コンテンツ大枠（ここから） -->
-
+<!-- コンテンツ大枠（ここまで） -->
 @endsection
