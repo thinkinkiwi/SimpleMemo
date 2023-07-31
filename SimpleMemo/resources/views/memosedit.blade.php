@@ -15,6 +15,13 @@
         <div>
         No {{ $memo->id }} メモ編集
         <input type="text" name="memo_content" class="form-control" value="{{$memo->memo_content}}">
+        
+        <!-- バリデーション時、エラーメッセージを表示する（ここから） -->
+        @error('memo_content')
+        <div class="alert alert-danger mt-1">{{ $message }}</div>
+        @enderror
+        <!-- バリデーション時、エラーメッセージを表示する（ここまで） -->
+
         </div>
         <!-- メモ編集画面（ここまで） -->
 

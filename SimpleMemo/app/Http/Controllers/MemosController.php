@@ -71,7 +71,9 @@ class MemosController extends Controller
         // バリデーション:エラー時の動き（ここから）
         if ($validator->fails()) 
         {
-            return redirect('/main')
+            // エラー時に編集画面を再表示する
+            $memo = Memo::where('user_id', Auth::user()->id)->find($request->id);
+            return redirect('/memosedit/' . $memo->id)
                 ->withInput()
                 ->withErrors($validator);
         }
